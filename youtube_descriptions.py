@@ -15,6 +15,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
+# Get video descriptions from the channel
 def get_video_descriptions(api_key, channel_id):
 
     YOUTUBE_API_SERVICE_NAME = "youtube"
@@ -45,6 +46,7 @@ def get_video_descriptions(api_key, channel_id):
     return video_ids
 
 
+# Put descriptions into dynamo table
 def load_descriptions(videos, dynamo_url, dynamo_table):
     dynamodb = boto3.resource(
         'dynamodb', endpoint_url=dynamo_url)
